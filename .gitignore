@@ -1,0 +1,8 @@
+/nbproject/
+/app/config/parameters.yml
+/app/cache/*/
+/app/cache/*.*
+/app/logs/*.*
+*.log
+/app/cache
+/app/logs

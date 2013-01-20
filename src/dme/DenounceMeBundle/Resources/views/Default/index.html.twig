@@ -1,0 +1,52 @@
+{% extends 'dmeDenounceMeBundle::layout.html.twig' %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ asset('bundles/dmedenounceme/js/default.js') }}"></script>
+{% endblock %}
+
+{% block content_header %}
+  <header id="header">
+    <div class="center">
+      <nav id="mainNav">
+        <ul>
+          <li class="active"><a href="#posts_anchor"><span>Les dénonciations ..</span></a></li>
+          <li><a href="#denounce_anchor"><span>Dénoncez !</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+{% endblock %}
+
+{% block posts %}
+  <section id="posts_tab" class="row">
+    <div class="center">
+      <h1>Les dénonciations</h1>
+      <strong class="subHeading">N'ayez pas honte de dire ce que vous n'avez pas honte de penser. (proverbe latin)</strong>
+      {% if posts is defined and posts|length %}
+        <div id="posts" class="gallery">
+          <ul class="slides">
+            <li>
+            {% for post in posts %}
+              <div class="row">
+                <blockquote>
+                  <q>{{ post.denounce }}</q>
+                  <p class="from_to">De {{ post.getFromPseudo }} à {{ post.getToPseudo }}</p>
+                </blockquote>
+              </div>
+            {% endfor %}
+            </li>
+          </ul>
+        </div>
+      {% else %}
+        <div id="empty_container">
+          <p class="empty">Aucune dénonciation ???</p>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
+  
+{% block denounce %}
+  
+{% endblock %}
