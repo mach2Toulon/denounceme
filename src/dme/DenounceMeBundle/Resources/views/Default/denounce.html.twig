@@ -1,9 +1,7 @@
 <div id="denounce_anchor"></div>
-<div class="center">
+<div>
   <h1>Dénoncez le !</h1>
   <strong class="subHeading">Ici vous êtes libre de dénoncer un ami, un collègue, un frère d'arme.</strong>
-  <div class="columns">
-    <div class="half">
       <form action="{{ path('_create') }}" method="post" {{ form_enctype(form) }} class="form">
         <fieldset>
           <h2>Une dénonciation, une !</h2>
@@ -38,6 +36,4 @@
           </div>
         </fieldset>
       </form>
-    </div>
-  </div>
 </div>

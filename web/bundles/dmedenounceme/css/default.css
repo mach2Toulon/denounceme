@@ -678,7 +678,11 @@
 	#map .imgHolder img{
 		width:100%;
 	}
-	.form{width:92%;}
+	
+  #denounce form {
+    width: 450px;
+  }
+  
 	#posts{
 		margin-top:-2.857em;
 	}
@@ -757,6 +761,10 @@
 	.flex-direction-nav{display:none;}
 	h1{font-size:3em;}
 	.subHeading{font-size:1.75em;}
+  
+  #denounce form {
+    width: 250px;
+  }
 }
 @media all and (max-width: 320px){
 	.buttons > span{display:none;}
@@ -765,6 +773,10 @@
 	h1{font-size:2.5em;}
 	.subHeading{font-size:1.5em;}
 	.news h3{font-size:1.25em;}
+  
+  #denounce form {
+    width: 250px;
+  }
 }
 @media all
 	and (min-device-width: 768px)
@@ -776,12 +788,11 @@
 		position:static;
 	}
 	#content{padding:0;}
-	
 }
 
 #denounce form {
-  margin-left: 250px;
-  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .from_to {
