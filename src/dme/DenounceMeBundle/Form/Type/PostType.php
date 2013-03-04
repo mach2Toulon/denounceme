@@ -7,9 +7,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 class PostType extends AbstractType {
   
   public function buildForm(FormBuilderInterface $builder, array $options) {
-    $builder->add('from_pseudo', null, array('label' => "Ton pseudo"))
-            ->add('to_pseudo',   null, array('label' => "Son pseudo"))
-            ->add('denounce',    null, array('label' => "Ta dénonciation"));
+    $builder->add('from_pseudo', null, array('label' => "Le dénoncé"))
+            ->add('to_pseudo',   null, array('label' => "L'infâme dénonceur"))
+            ->add('denounce',    null, array('label' => "La dénonciation"));
   }
   
   public function getDefaultOptions(array $options) {
