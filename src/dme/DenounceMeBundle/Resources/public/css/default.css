@@ -795,11 +795,18 @@
   margin-right: auto;
 }
 
-.from_to {
+.post_footer {
   width: 100%;
-  text-align: right;
   font-size: 0.8em;
   font-style: italic; 
+}
+
+.post_footer .date {
+  float: left;
+}
+
+.post_footer .from_to {
+  float: right;
 }
 
 #empty_container {

@@ -31,7 +31,10 @@
               <div class="row">
                 <blockquote>
                   <q>{{ post.denounce }}</q>
-                  <p class="from_to">De {{ post.getFromPseudo }} à {{ post.getToPseudo }}</p>
+                  <div class="post_footer">
+                    <span class="date">Dénoncé le {{ post.getCreatedAt.format('d/m/Y') }}</span>
+                    <span class="from_to">De {{ post.getFromPseudo }} à {{ post.getToPseudo }}</span>
+                  </div>
                 </blockquote>
               </div>
             {% endfor %}
