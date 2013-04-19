@@ -7,6 +7,39 @@ in 2.0 minor versions.
 To get the diff for a specific change, go to https://github.com/symfony/symfony/commit/XXX where XXX is the change hash
 To get the diff between two versions, go to https://github.com/symfony/symfony/compare/v2.0.0...v2.0.1
 
+* 2.0.23 (2013-03-20)
+
+ * f8812b2: [Form] Fixed "label" option to accept the value "0"
+ * cb03074: [DomCrawler] lowered parsed protocol string (fixes #6986)
+ * 179cd58: [Process] Fix regression introduced in #6620 / 880da01c49a9255f5022ab7e18bca38c18f56370, fixes #7082
+ * 87f3db7: [EventDispathcer] Fix removeListener
+ * bd0ad92: [DependencyInjection] Allow frozen containers to be dumped to graphviz
+ * a12744e: Add dot character `.` to legal mime subtype regular expression
+ * ddf4678: [HttpFoundation] fixed the creation of sub-requests under some circumstancies (closes #6923, closes #6936)
+ * 74f2fcf: fixed a circular call (closes #6864)
+ * 4119caf: [DependencyInjection] fixed the creation of synthetic services in ContainerBuilder
+ * ce38069: [FrameworkBundle] fixed Client::doRequest that must call its parent method (closes #6737)
+ * 53ccc2c: [Yaml] fixed ignored text when parsing an inlined mapping or sequence (closes #6786)
+ * ab0385c: [Yaml] fixed #6773
+ * fea20b7: [Yaml] fixed #6770
+
+* 2.0.22 (2013-01-17)
+
+ * 3c87e2e: Added Yaml\Dumper::setIndentation() method to allow a custom indentation level of nested nodes.
+ * ba6e315: added a way to enable/disable object support when parsing/dumping
+ * ac756bf: added a way to enable/disable PHP support when parsing a YAML input via Yaml::parse()
+ * dc2cc6b: [Console] fixed input bug when the value of an option is empty (closes #6649, closes #6689)
+ * 880da01: [Process] In edge cases `getcwd()` can return `false`, then `proc_open()` should get `null` to use default value (the working dir of the current PHP process)
+ * 1d362b8: [DependencyInjection] fixed a bug where the strict flag on references were lost (closes #6607)
+ * 3195122: [HttpFoundation] Check if required shell functions for `FileBinaryMimeTypeGuesser` are not disabled
+ * dbafc2c: [CssSelector] added css selector with empty string
+ * ba2d035: Restrict Monolog version to be in version <1.3
+ * e0923ae: [DependencyInjection] fixed PhpDumper optimizations when an inlined service depends on the current one indirectly
+ * cd15390: [DependencyInjection] fixed PhpDumper when an inlined service definition has some properties
+ * 73d9cef: [Locale] Adjust `StubIntlDateFormatter` to have new methods added in PHP 5.5
+ * 913b564: [Locale] Fix failing `StubIntlDateFormatter` in PHP 5.5
+ * 8ae773b: [Form] Fix failing `MonthChoiceList` in PHP 5.5
+
 * 2.0.21 (2012-12-21)
 
  * b8e5689: [FrameworkBundle] fixed ESI calls
@@ -221,7 +254,7 @@ To get the diff between two versions, go to https://github.com/symfony/symfony/c
  * d67d419: [HttpFoundation] added missing trustProxy condition
  * efce640: [Yaml][Parser] throw an exception if not readable
  * aa58330: [Form] fixed flawed condition
- * 253eeba: [BugFix][Validator] Fix for PHP incosistent behaviour of ArrayAccess
+ * 253eeba: [BugFix][Validator] Fix for PHP inconsistent behaviour of ArrayAccess
  * 0507840: Prevent parameters from overwriting the template filename.
  * 9bc41d0: [HttpFoundation] Fixed #3053
  * 9441c46: [DependencyInjection] PhpDumper, fixes #2730

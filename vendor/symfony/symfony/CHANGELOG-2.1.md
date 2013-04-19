@@ -7,6 +7,72 @@ in 2.1 minor versions.
 To get the diff for a specific change, go to https://github.com/symfony/symfony/commit/XXX where XXX is the change hash
 To get the diff between two versions, go to https://github.com/symfony/symfony/compare/v2.1.0...v2.1.1
 
+* 2.1.9 (2013-03-26)
+
+ * 9875c4b: Added '@@' escaping strategy for YamlFileLoader and YamlDumper
+ * bbcdfe2: [Yaml] fixed bugs with folded scalar parsing
+ * 5afea04: [Form] made DefaultCsrfProvider using session_status() when available
+ * c928ddc: [HttpFoudantion] fixed Request::getPreferredLanguage()
+ * e6b7515: [DomCrawler] added support for query string with slash
+ * 17dc2ff: [HttpRequest] fixes Request::getLanguages() bug
+ * e51432a: sub-requests are now created with the same class as their parent
+ * ef53456: [DoctrineBridge] Avoids blob values to be logged by doctrine
+ * 6575df6: [Security] use current request attributes to generate redirect url?
+ * 7216cb0: [Validator] fix showing wrong max file size for upload errors
+ * c423f16: [2.1][TwigBridge] Fixes Issue #7342 in TwigBridge
+ * 7d87ecd: [FrameworkBundle] fixed cahe:clear command's warmup
+ * fe4cc24: [TwigBridge] fixed fixed scope & trans_default_domain node visitor
+ * fc47589: [BrowserKit] added ability to ignored malformed set-cookie header
+ * 5bc30bb: [Translation] added xliff loader/dumper with resname support
+ * 7241be9: [Finder] fixed a potential issue on Solaris where INF value is wrong (refs #7269)
+ * 1d3da29: [FrameworkBundle] avoids cache:clear to break if new/old folders already exist
+ * b9cdb9a: [HttpKernel] Fixed possible profiler token collision (closes #7272, closes #7171)
+ * d1f5d25: [FrameworkBundle] Fixes invalid serialized objects in cache
+ * c82c754: RedisProfilerStorage wrong db-number/index-number selected
+ * e86fefa: Unset loading[$id] in ContainerBuilder on exception
+ * 73bead7: [ClassLoader] made DebugClassLoader idempotent
+ * a4ec677: [DomCrawler] Fix relative path handling in links
+ * 6681df0: [Console] fixed StringInput binding
+ * 5b19c89: [Console] fixed unparsed StringInput tokens
+ * bae83c7: [TwigBridge] fixed trans twig extractor
+ * 8f8ba38: [DomCrawler] fix handling of schemes by Link::getUri()
+ * 83382bc: [TwigBridge] fixed the translator extractor that were not trimming the text in trans tags (closes #7056)
+ * b1ea8e5: Fixed handling absent href attribute in base tag
+ * 8d9cd42: Routing issue with installation in a sub-directory ref: https://github.com/symfony/symfony/issues/7129
+ * 0690709: added a DebuClassLoader::findFile() method to make the wrapping less invasive
+ * 635b1fc: StringInput resets the given options.
+
+* 2.1.8 (2013-02-23)
+
+ * b2080c4: [HttpFoundation] Remove Cache-Control when using https download via IE<9 (fixes #6750)
+ * b7bd630: [Form] Fixed TimeType not to render a "size" attribute in select tags
+ * 368f62f: Expanded fault-tolerance for unusual cookie dates
+ * cb03074: [DomCrawler] lowered parsed protocol string (fixes #6986)
+ * 3e40c17: [HttpKernel] fixed locale management when exiting sub-requests
+ * 179cd58: [Process] Fix regression introduced in #6620 / 880da01c49a9255f5022ab7e18bca38c18f56370, fixes #7082
+ * 18b139d: [FrameworkBundle] tweaked reference dumper command (see #7093)
+ * 0eff68f: Fix REMOTE_ADDR for cached subrequests
+ * 5e8d844: [Process] Warn user with a useful message when tmpfile() failed
+ * 42d3c4c: added support for the X-Forwarded-For header (closes #6982, closes #7000)
+ * 6a9c510: fixed the IP address in HttpCache when calling the backend
+ * 87f3db7: [EventDispathcer] Fix removeListener
+ * e0637fa: [DependencyInjection] Add clone for resources which were introduced in 2.1
+ * bd0ad92: [DependencyInjection] Allow frozen containers to be dumped to graphviz
+ * 83e9558: Fix 'undefined index' error, when entering scope recursively
+ * 3615e19: [Security] fixed session creation on login (closes #7011)
+ * a12744e: Add dot character `.` to legal mime subtype regular expression
+ * e50d333: [HttpKernel] fixed the creation of the Profiler directory
+ * ddf4678: [HttpFoundation] fixed the creation of sub-requests under some circumstancies (closes #6923, closes #6936)
+ * 8ca00c5: [Security] fixed session creation when none is needed (closes #6917)
+ * 74f2fcf: fixed a circular call (closes #6864)
+ * 6f71948: [Yaml] fixed wrong merge (indentation default is 4 as of 2.1)
+ * 4119caf: [DependencyInjection] fixed the creation of synthetic services in ContainerBuilder
+ * 11aaa2e: Added an error message in the DebugClassLoader when using / instead of \.
+ * ce38069: [FrameworkBundle] fixed Client::doRequest that must call its parent method (closes #6737)
+ * 53ccc2c: [Yaml] fixed ignored text when parsing an inlined mapping or sequence (closes #6786)
+ * ab0385c: [Yaml] fixed #6773
+ * fea20b7: [Yaml] fixed #6770
+
 * 2.1.7 (2013-01-17)
 
  * e17e232: [Yaml] fixed default value

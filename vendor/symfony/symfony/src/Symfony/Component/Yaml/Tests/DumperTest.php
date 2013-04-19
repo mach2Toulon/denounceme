@@ -21,6 +21,21 @@ class DumperTest extends \PHPUnit_Framework_TestCase
     protected $dumper;
     protected $path;
 
+    protected $array = array(
+        '' => 'bar',
+        'foo' => '#bar',
+        'foo\'bar' => array(),
+        'bar' => array(1, 'foo'),
+        'foobar' => array(
+            'foo' => 'bar',
+            'bar' => array(1, 'foo'),
+            'foobar' => array(
+                'foo' => 'bar',
+                'bar' => array(1, 'foo'),
+            ),
+        ),
+    );
+
     protected function setUp()
     {
         $this->parser = new Parser();
@@ -33,6 +48,33 @@ class DumperTest extends \PHPUnit_Framework_TestCase
         $this->parser = null;
         $this->dumper = null;
         $this->path = null;
+        $this->array = null;
+    }
+
+    public function testSetIndentation()
+    {
+        $this->dumper->setIndentation(7);
+
+$expected = <<<EOF
+'': bar
+foo: '#bar'
+'foo''bar': {  }
+bar:
+       - 1
+       - foo
+foobar:
+       foo: bar
+       bar:
+              - 1
+              - foo
+       foobar:
+              foo: bar
+              bar:
+                     - 1
+                     - foo
+
+EOF;
+        $this->assertEquals($expected, $this->dumper->dump($this->array, 4, 0));
     }
 
     public function testSpecifications()
@@ -63,27 +105,11 @@ class DumperTest extends \PHPUnit_Framework_TestCase
 
     public function testInlineLevel()
     {
-        // inline level
-        $array = array(
-            '' => 'bar',
-            'foo' => '#bar',
-            'foo\'bar' => array(),
-            'bar' => array(1, 'foo'),
-            'foobar' => array(
-                'foo' => 'bar',
-                'bar' => array(1, 'foo'),
-                'foobar' => array(
-                    'foo' => 'bar',
-                    'bar' => array(1, 'foo'),
-                ),
-            ),
-        );
-
         $expected = <<<EOF
 { '': bar, foo: '#bar', 'foo''bar': {  }, bar: [1, foo], foobar: { foo: bar, bar: [1, foo], foobar: { foo: bar, bar: [1, foo] } } }
 EOF;
-$this->assertEquals($expected, $this->dumper->dump($array, -10), '->dump() takes an inline level argument');
-$this->assertEquals($expected, $this->dumper->dump($array, 0), '->dump() takes an inline level argument');
+$this->assertEquals($expected, $this->dumper->dump($this->array, -10), '->dump() takes an inline level argument');
+$this->assertEquals($expected, $this->dumper->dump($this->array, 0), '->dump() takes an inline level argument');
 
 $expected = <<<EOF
 '': bar
@@ -93,7 +119,7 @@ bar: [1, foo]
 foobar: { foo: bar, bar: [1, foo], foobar: { foo: bar, bar: [1, foo] } }
 
 EOF;
-        $this->assertEquals($expected, $this->dumper->dump($array, 1), '->dump() takes an inline level argument');
+        $this->assertEquals($expected, $this->dumper->dump($this->array, 1), '->dump() takes an inline level argument');
 
         $expected = <<<EOF
 '': bar
@@ -108,7 +134,7 @@ foobar:
     foobar: { foo: bar, bar: [1, foo] }
 
 EOF;
-        $this->assertEquals($expected, $this->dumper->dump($array, 2), '->dump() takes an inline level argument');
+        $this->assertEquals($expected, $this->dumper->dump($this->array, 2), '->dump() takes an inline level argument');
 
         $expected = <<<EOF
 '': bar
@@ -127,7 +153,7 @@ foobar:
         bar: [1, foo]
 
 EOF;
-        $this->assertEquals($expected, $this->dumper->dump($array, 3), '->dump() takes an inline level argument');
+        $this->assertEquals($expected, $this->dumper->dump($this->array, 3), '->dump() takes an inline level argument');
 
         $expected = <<<EOF
 '': bar
@@ -148,13 +174,13 @@ foobar:
             - foo
 
 EOF;
-        $this->assertEquals($expected, $this->dumper->dump($array, 4), '->dump() takes an inline level argument');
-        $this->assertEquals($expected, $this->dumper->dump($array, 10), '->dump() takes an inline level argument');
+        $this->assertEquals($expected, $this->dumper->dump($this->array, 4), '->dump() takes an inline level argument');
+        $this->assertEquals($expected, $this->dumper->dump($this->array, 10), '->dump() takes an inline level argument');
     }
 
     public function testObjectSupportEnabled()
     {
-        $dump = $this->dumper->dump(array('foo' => new A(), 'bar' => 1), 0, false, true);
+        $dump = $this->dumper->dump(array('foo' => new A(), 'bar' => 1), 0, 0, false, true);
 
         $this->assertEquals('{ foo: !!php/object:O:30:"Symfony\Component\Yaml\Tests\A":1:{s:1:"a";s:3:"foo";}, bar: 1 }', $dump, '->dump() is able to dump objects');
     }
@@ -171,7 +197,7 @@ EOF;
      */
     public function testObjectSupportDisabledWithExceptions()
     {
-        $this->dumper->dump(array('foo' => new A(), 'bar' => 1), 0, true, false);
+        $this->dumper->dump(array('foo' => new A(), 'bar' => 1), 0, 0, true, false);
     }
 }
 
